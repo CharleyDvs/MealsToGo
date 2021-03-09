@@ -2,15 +2,24 @@ import React from "react";
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 
-const Title = styled.Text`
+const Info = styled.View`
   padding: ${(props) => props.theme.space[2]};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+
+const Title = styled.Text`
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${(props) => props.theme.fontSizes.title};
   color: ${(props) => props.theme.colors.ui.primary};
 `;
 
+const Addres = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+`;
+
 const CardContent = styled(Card.Content)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  font-size: ${(props) => props.theme.fontSizes.title};
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -29,7 +38,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <Card elevation={5}>
       <Card.Cover source={{ uri: photos[0] }} />
       <CardContent>
-        <Title>{name}</Title>
+        <Info>
+          <Title>{name}</Title>
+          <Addres>{address}</Addres>
+        </Info>
       </CardContent>
     </Card>
   );
