@@ -8,18 +8,18 @@ import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px;`}
-  background-color: #dfdfdf;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const SearchContainer = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
   align-items: flex-start;
   justify-content: center;
 `;
 
 const ListContainer = styled.View`
   flex: 1;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantsScreen = () => {
