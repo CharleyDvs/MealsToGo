@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components/native";
 
 const sizeVariants = {
@@ -13,11 +14,16 @@ const positionVariants = {
   right: "margin-right",
 };
 
-export const Spacer = styled.View`
-  ${({ position, size }) => `
-    ${positionVariants[position]}: ${sizeVariants[size]};
-  `}
+const SpacerView = styled.View`
+  ${({ variant }) => variant};
 `;
+
+export const Spacer = ({ position, size, children }) => {
+  const variant = `
+  ${positionVariants[position]}: ${sizeVariants[size]};
+  `;
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
 
 Spacer.defaultProps = {
   position: "top",
