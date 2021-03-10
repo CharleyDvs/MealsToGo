@@ -3,6 +3,7 @@ import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
 import {
+  RestaurantCard,
   Info,
   Section,
   SectionEnd,
@@ -29,15 +30,20 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <Card elevation={5}>
+    <RestaurantCard elevation={5}>
       <Card.Cover source={{ uri: photos[0] }} />
       <CardContent>
         <Info>
           <Text variant="label">{name}</Text>
           <Section>
             <Rating>
-              {ratingArray.map((item) => (
-                <SvgXml xml={star} width={20} height={20} />
+              {ratingArray.map((item, index) => (
+                <SvgXml
+                  key={`star-${index}`}
+                  xml={star}
+                  width={20}
+                  height={20}
+                />
               ))}
             </Rating>
             <SectionEnd>
@@ -51,6 +57,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           <Text variant="caption">{address}</Text>
         </Info>
       </CardContent>
-    </Card>
+    </RestaurantCard>
   );
 };
