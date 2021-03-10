@@ -1,56 +1,18 @@
 import React from "react";
-import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
+import {
+  Info,
+  Section,
+  SectionEnd,
+  Rating,
+  CardContent,
+} from "./RestaurantInfoCard.styles";
+import { Text } from "../../../components/textComponent/TextComponent";
 import { Spacer } from "../../../components/spacer/Spacer";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-
-const Info = styled.View`
-  padding: ${(props) => props.theme.space[2]};
-`;
-
-const Title = styled.Text`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const Addres = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-`;
-
-const Section = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const SectionEnd = styled.View`
-  flex-direction: row;
-  align-items: center;
-  height: 20px;
-  width: auto;
-`;
-
-const ClosedText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.sizes[1]};
-  color: ${(props) => props.theme.colors.text.error};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const CardContent = styled(Card.Content)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  font-size: ${(props) => props.theme.fontSizes.title};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -71,7 +33,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Card.Cover source={{ uri: photos[0] }} />
       <CardContent>
         <Info>
-          <Title>{name}</Title>
+          <Text variant="label">{name}</Text>
           <Section>
             <Rating>
               {ratingArray.map((item) => (
@@ -80,13 +42,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             </Rating>
             <SectionEnd>
               {isClosedTemporarily && (
-                <ClosedText>Closed Temporarily</ClosedText>
+                <Text variant="error"> Closed Temporarily</Text>
               )}
               <Spacer position="left" size="md" />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </SectionEnd>
           </Section>
-          <Addres>{address}</Addres>
+          <Text variant="caption">{address}</Text>
         </Info>
       </CardContent>
     </Card>
