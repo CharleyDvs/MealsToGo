@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/infrastructure/theme";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -43,6 +44,22 @@ function SettingsScreen() {
   );
 }
 
+const createScreenOptions = ({ route }) => ({
+  tabBarIcon: ({ focused, color }) => {
+    let iconName;
+    if (route.name === "Restaurants") {
+      iconName = focused ? "restaurant" : "restaurant-outline";
+    }
+    if (route.name === "Map") {
+      iconName = focused ? "map" : "map-outline";
+    }
+    if (route.name === "Settings") {
+      iconName = focused ? "cog" : "cog-outline";
+    }
+    return <Ionicons name={iconName} size={24} color={color} />;
+  },
+});
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -60,7 +77,13 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={createScreenOptions}
+            tabBarOptions={{
+              activeTintColor: "black",
+              inactiveTintColor: "gray",
+            }}
+          >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Settings" component={SettingsScreen} />
