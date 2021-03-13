@@ -3,6 +3,7 @@ import MapView from "react-native-maps";
 import styled from "styled-components/native";
 
 import { Search } from "../components/SearchComponent";
+import { MapCallout } from "../components/MapCallout";
 
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
@@ -38,8 +39,21 @@ export const MapScreen = () => {
           longitudeDelta: 0.02,
         }}
       >
-        {restaurants.map((restaurant) => {
-          return null;
+        {restaurants.map((currentRestaurant) => {
+          return (
+            <MapView.Marker
+              key={currentRestaurant.name}
+              title={currentRestaurant.name}
+              coordinate={{
+                latitude: currentRestaurant.geometry.location.lat,
+                longitude: currentRestaurant.geometry.location.lng,
+              }}
+            >
+              <MapView.Callout>
+                <MapCallout restaurant={currentRestaurant} />
+              </MapView.Callout>
+            </MapView.Marker>
+          );
         })}
       </Map>
     </>

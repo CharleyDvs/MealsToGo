@@ -33,12 +33,18 @@ const label = (theme) => `
     font-weight: ${theme.fontWeights.medium};
 `;
 
+const centeredLabel = (theme) => `
+    font-family: ${theme.fonts.body};
+    text-align: center;
+`;
+
 const variants = {
   body,
   label,
   caption,
   error,
   hint,
+  centeredLabel,
 };
 
 const StyledText = styled.Text`
