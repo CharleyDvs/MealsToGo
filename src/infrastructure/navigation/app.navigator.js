@@ -5,17 +5,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text } from "react-native";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/map/screens/map.screen";
 import { SafeArea } from "../../components/safeArea/SafeArea";
-
-function MapScreen() {
-  return (
-    <SafeArea>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Map!</Text>
-      </View>
-    </SafeArea>
-  );
-}
 
 function SettingsScreen() {
   return (
