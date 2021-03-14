@@ -6,13 +6,13 @@ import WebView from "react-native-webview";
 import { Text } from "../textComponent/TextComponent";
 
 const CompactImage = styled.Image`
-  border-radius: 10px;
+  border-radius: 16px;
   width: 120px;
   height: 100px;
 `;
 
 const CompactWebview = styled(WebView)`
-  border-radius: 10px;
+  border-radius: 16px;
   width: 100px;
   height: 100px;
 `;
