@@ -7,7 +7,6 @@ import { CompactRestaurantInfo } from "../restaurant/CompactRestaurantInfo";
 
 const FavouritesWrapper = styled.View`
   padding: 10px;
-  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 export const FavouritesBar = ({ favourites, onNavigate }) => {
