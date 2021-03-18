@@ -38,6 +38,13 @@ const centeredLabel = (theme) => `
     text-align: center;
 `;
 
+const centeredTitle = (theme) => `
+    font-family: ${theme.fonts.body};
+    text-align: center;
+    font-weight: ${theme.fontWeights.bold};
+    font-size: 32px;
+`;
+
 const variants = {
   body,
   label,
@@ -45,6 +52,7 @@ const variants = {
   error,
   hint,
   centeredLabel,
+  centeredTitle,
 };
 
 const StyledText = styled.Text`
