@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Snackbar } from "react-native-paper";
+import { Snackbar, ActivityIndicator, Colors } from "react-native-paper";
 
 import { AccountBg } from "../components/AccountBg";
 import { AuthButton, Form, AccountInput } from "../components/Account.styles";
@@ -11,7 +11,9 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error, setError } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error, setError } = useContext(
+    AuthenticationContext
+  );
   return (
     <AccountBg>
       <Text variant="centeredTitle">Meals To Go</Text>
@@ -34,13 +36,17 @@ export const LoginScreen = () => {
           onChangeText={(text) => setPassword(text)}
         />
         <Spacer position="bottom" size="md" />
-        <AuthButton
-          onPress={() => onLogin(email, password)}
-          icon="lock-open-outline"
-          mode="contained"
-        >
-          Log in
-        </AuthButton>
+        {isLoading ? (
+          <ActivityIndicator animating={true} color={Colors.grey800} />
+        ) : (
+          <AuthButton
+            onPress={() => onLogin(email, password)}
+            icon="lock-open-outline"
+            mode="contained"
+          >
+            Log in
+          </AuthButton>
+        )}
         {error && (
           <>
             <Spacer position="bottom" size="md" />

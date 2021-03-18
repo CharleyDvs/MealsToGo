@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Snackbar } from "react-native-paper";
+import { Snackbar, ActivityIndicator, Colors } from "react-native-paper";
 
 import { AccountBg } from "../components/AccountBg";
 import { AuthButton, Form, AccountInput } from "../components/Account.styles";
@@ -11,7 +11,9 @@ export const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const { onRegister, error, setError } = useContext(AuthenticationContext);
+  const { onRegister, isLoading, error, setError } = useContext(
+    AuthenticationContext
+  );
   return (
     <AccountBg>
       <Form>
@@ -41,13 +43,17 @@ export const RegisterScreen = () => {
           onChangeText={(text) => setRepeatedPassword(text)}
         />
         <Spacer position="bottom" size="md" />
-        <AuthButton
-          onPress={() => onRegister(email, password, repeatedPassword)}
-          icon="mail"
-          mode="contained"
-        >
-          Register
-        </AuthButton>
+        {isLoading ? (
+          <ActivityIndicator animating={true} color={Colors.grey800} />
+        ) : (
+          <AuthButton
+            onPress={() => onRegister(email, password, repeatedPassword)}
+            icon="mail"
+            mode="contained"
+          >
+            Register
+          </AuthButton>
+        )}
         {error && (
           <>
             <Spacer position="bottom" size="md" />
