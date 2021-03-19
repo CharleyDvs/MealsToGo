@@ -5,6 +5,14 @@ import { TextInput } from "react-native-paper";
 
 import { colors } from "../../../infrastructure/theme/colors";
 
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${(props) => props.theme.space[2]};
+`;
+
 export const StyledBackground = styled(ImageBackground)`
   flex: 1;
   justify-content: center;
