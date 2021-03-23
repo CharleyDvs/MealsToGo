@@ -10,6 +10,7 @@ import { SafeArea } from "../../../components/safeArea/SafeArea";
 import { Search } from "../components/SearchComponent";
 import { FavouritesBar } from "../../../components/favourites/FavoritesBarComponent";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
+import { FadeInView } from "../../../components/animations/fade.animations";
 
 const RestaurantFlatlist = styled(FlatList)`
   padding: ${(props) => props.theme.space[3]};
@@ -57,7 +58,9 @@ export const RestaurantsScreen = ({ navigation }) => {
                   });
                 }}
               >
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </TouchableOpacity>
             );
           }}
